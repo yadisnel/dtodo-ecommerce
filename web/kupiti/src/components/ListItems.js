@@ -6,6 +6,8 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PeopleIcon from '@material-ui/icons/People';
+import ChatIcon from '@material-ui/icons/Chat';
+import SellIcon from '@material-ui/icons/MonetizationOn';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 
@@ -19,13 +21,13 @@ export const mainListItems = (
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <SellIcon />
       </ListItemIcon>
       <ListItemText primary="Sell" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <PeopleIcon />
+        <ChatIcon />
       </ListItemIcon>
       <ListItemText primary="Chat" />
     </ListItem>
@@ -39,7 +41,7 @@ export const secondaryListItems = (
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Sales" />
+      <ListItemText primary="Categories" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>

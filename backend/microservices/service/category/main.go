@@ -1,9 +1,8 @@
 package main
 
 import (
-	"category/handler"
-	pb "category/proto"
-
+	"github.com/yadisnel/kupiti/backend/microservices/service/category/handler"
+	categorypb "github.com/yadisnel/kupiti/backend/microservices/service/category/proto"
 	"github.com/micro/micro/v3/service"
 	"github.com/micro/micro/v3/service/logger"
 )
@@ -16,7 +15,7 @@ func main() {
 	)
 
 	// Register handler
-	pb.RegisterCategoryHandler(srv.Server(), new(handler.Category))
+	categorypb.RegisterCategoryHandler(srv.Server(), new(handler.Category))
 
 	// Run service
 	if err := srv.Run(); err != nil {

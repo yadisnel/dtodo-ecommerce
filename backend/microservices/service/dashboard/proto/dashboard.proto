@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+package dashboard;
+import "google/protobuf/empty.proto";
+
+option go_package = "proto;dashboard";
+
+service Dashboard {
+  rpc AddCategory(RequestAddCategory) returns (ResponseAddCategory) {}
+  rpc RemoveCategory(RequestRemoveCategory) returns (ResponseRemoveCategory) {}
+  rpc AddSubCategory(RequestAddSubCategory) returns (ResponseAddSubCategory) {}
+  rpc RemoveSubCategory(RequestRemoveSubCategory) returns (ResponseRemoveSubCategory) {}
+  rpc RetrieveAllCategories(google.protobuf.Empty) returns (stream ResponseRetrieveAllCategories) {}
+  rpc AddRegion(RequestAddRegion) returns (ResponseAddRegion) {}
+  rpc RemoveRegion(RequestRemoveRegion) returns (ResponseRemoveRegion) {}
+  rpc UpdateRegion(RequestUpdateRegion) returns (ResponseUpdateRegion) {}
+  rpc RetrieveAllRegions(google.protobuf.Empty) returns (stream ResponseRetrieveAllRegions) {}
+}
+
+message SubCategory {
+  string Id = 1;
+  string Name = 2;
+}
+
+
+message RequestAddCategory {
+  string LocalId = 1;
+  string Name = 2;
+  int64 NOrder = 3;
+  repeated SubCategory SubCategories = 4;
+  int64 Created = 5;
+  int64 Modified = 6;
+  bool Deleted = 7;
+}
+
+message ResponseAddCategory {
+  string Id = 1;
+	string LocalId = 2;
+	string Name = 3;
+	int64 NOrder = 4;
+	repeated SubCategory SubCategories = 5;
+	int64 Created = 6;
+	int64 Modified = 7;
+	bool Deleted = 8;
+}
+
+message RequestRemoveCategory {
+  string Id = 1;
+}
+
+message ResponseRemoveCategory {
+  string Id = 1;
+}
+
+message RequestAddSubCategory {
+  string CategoryId = 1;
+  string Name = 2;
+}
+
+message ResponseAddSubCategory {
+	string Id = 1;
+	string LocalId = 2;
+	string Name = 3;
+	int64 NOrder = 4;
+	repeated SubCategory SubCategories = 5;
+	int64 Created = 6;
+	int64 Modified = 7;
+	bool Deleted = 8;
+}
+
+message RequestRemoveSubCategory {
+  string CategoryId = 1;
+  string SubCategoryId = 2;
+}
+
+message ResponseRemoveSubCategory {
+  string Id = 1;
+}
+
+message ResponseRetrieveAllCategories {
+  string Id = 1;
+  string LocalId = 2;
+  string Name = 3;
+  int64 NOrder = 4;
+  repeated SubCategory SubCategories = 5;
+  int64 Created = 6;
+  int64 Modified = 7;
+  bool Deleted = 8;
+}
+
+message RequestAddRegion {
+	string Name = 1;
+	string NOrder = 2;
+	string Created = 3;
+	string Modified = 4;
+	string Deleted = 5;
+}
+
+message ResponseAddRegion {
+	string Id = 1;
+	string Name = 2;
+	string NOrder = 3;
+	string Created = 4;
+	string Modified = 5;
+	string Deleted =6;
+}
+
+message RequestRemoveRegion {
+	string Id = 1;
+}
+
+message ResponseRemoveRegion {
+	string Id = 1;
+}
+
+message RequestUpdateRegion {
+	string Id = 1;
+	string Name = 2;
+	string NOrder = 3;
+	string Created = 4;
+	string Modified = 5;
+	string Deleted =6;
+}
+
+message ResponseUpdateRegion {
+	string Id = 1;
+	string Name = 2;
+	string NOrder = 3;
+	string Created = 4;
+	string Modified = 5;
+	string Deleted =6;
+}
+
+message ResponseRetrieveAllRegions {
+	string Id = 1;
+	string Name = 2;
+	string NOrder = 3;
+	string Created = 4;
+	string Modified = 5;
+	string Deleted =6;
+}

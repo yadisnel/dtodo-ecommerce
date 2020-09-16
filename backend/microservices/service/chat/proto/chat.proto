@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package chat;
+
+option go_package = "proto;chat";
+
+service Chat {
+	rpc WriteMessage(RequestWriteMessage) returns (ResponseWriteMessage) {}
+	rpc RemoveMessage(RequestRemoveMessage) returns (ResponseRemoveMessage) {}
+}
+
+message RequestWriteMessage {
+	string UserOwnerId = 1;
+	string ConversationId = 2;
+	string FromUserId = 3;
+	string FromUserName =4;
+	string ToUserId =5;
+	string ToUserName =6;
+	string Body =7;
+	int64 Created =8;
+	int64 Modified =9;
+	bool Deleted =10;
+}
+
+message ResponseWriteMessage {
+	string Id = 1;
+}
+
+message RequestRemoveMessage {
+	string Id = 1;
+}
+
+message ResponseRemoveMessage {
+	string Id = 1;
+}

@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package account;
+
+option go_package = "proto;account";
+
+service Account {
+	rpc Token(RequestToken) returns (ResponseToken) {}
+	rpc Info(RequestInfo) returns (ResponseInfo) {}
+	rpc UpdateAvatar(RequestUpdateAvatar) returns (ResponseUpdateAvatar) {}
+	rpc EmqxAuthUser(RequestEmqxAuthUser) returns (ResponseEmqxAuthUser) {}
+	rpc EmqxAuthAdmin(RequestEmqxAuthAdmin) returns (ResponseEmqxAuthAdmin) {}
+}
+
+message RequestToken {
+	string User = 1;
+	string Password = 2;
+}
+
+message ResponseToken {
+	string Token = 1;
+	string Password = 2;
+}
+
+message RequestInfo {
+	string UserId = 1;
+}
+
+message Image {
+	string Id=1;
+	string OriginalKey=2;
+	int64 OriginalWidth=3;
+	int64 OriginalHeight=4;
+	int64 OriginalZize=5;
+	string OriginalUrl=6;
+	string ThumbKey=7;
+	int64 ThumbWidth=8;
+	int64 ThumbHeight=9;
+	int64 ThumbSize=10;
+	string ThumbUrl=11;
+}
+
+message Location {
+	string Type=1;
+	repeated float Coordinates = 2;
+}
+
+message Shop {
+	string Name=1;
+	repeated string Images = 2;
+	Location Location = 3;
+	string ProvinceId = 4;
+	string ProvinceName = 5;
+}
+
+
+message ResponseInfo {
+	string Id = 1;
+	string FacebookId = 2;
+	string Name = 3;
+	string FirstName = 4;
+	string LastNamem= 5;
+	Image Avatar = 6;
+	string Role = 7;
+	int64 Created = 8;
+	int64 Modified = 9;
+	bool Disabled = 10;
+	Shop Shop= 11;
+}
+
+message Token {
+	string AccessToken = 1;
+	string TokenType = 2;
+}
+
+message RequestUpdateAvatar {
+	string UserId = 1;
+	bytes Avatar = 2;
+}
+
+message ResponseUpdateAvatar {
+	string Id = 1;
+}
+
+message RequestEmqxAuthUser {
+	string User = 1;
+	string Password = 2;
+}
+
+message ResponseEmqxAuthUser {
+	bool Authorized = 1;
+}
+message RequestEmqxAuthAdmin {
+	string User = 1;
+	string Password = 2;
+}
+
+message ResponseEmqxAuthAdmin {
+	bool Authorized = 1;
+}
+
+message RequestEmqxAuthAcl {
+	string Username = 1;
+	string Access = 2;
+	string IpAddr = 3;
+	string Topic = 4;
+}
+
+message ResponseEmqxAuthAcl {
+	bool Authorized = 1;
+}

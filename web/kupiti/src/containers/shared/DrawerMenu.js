@@ -66,7 +66,6 @@ const DrawerMenu = (props) => {
   const {pathname} = location
 
   const handlerItemClick = (path) => {
-    console.log(pathname, path)
     if(pathname !== path){
       history.push(path)
     }
